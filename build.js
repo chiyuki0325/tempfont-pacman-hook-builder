@@ -6,7 +6,7 @@ var temp_fonts_dir = "~/.fonts/ms-tmp"; // should be writable
 
 function generate_hook(program){
     return(`#!/bin/bash
-bwrap --dev-bind / / --tmpfs ${temp_fonts_dir} /bin/bash -c "for file in \\$(find ${hidden_fonts_dir} -name '.*' | grep tt | sed -s 's#${hidden_fonts_dir}/.##');do cp ${hidden_fonts_dir}/.\\$file ${temp_fonts_dir}/\\$file;done;ls ${temp_fonts_dir};/usr/bin/${program}.bak \"$@\""`);
+bwrap --dev-bind / / --tmpfs ${temp_fonts_dir} /bin/bash -c "for file in \\$(find ${hidden_fonts_dir} -name '.*' | grep tt | sed -s 's#${hidden_fonts_dir}/.##');do cp ${hidden_fonts_dir}/.\\$file ${temp_fonts_dir}/\\$file;done;ls ${temp_fonts_dir};/usr/bin/${program}.bak \\"$@\\""`);
 };
 
 var generated_hook = `[Trigger]
